@@ -3,31 +3,65 @@
 <html>
 
     <head>
+        <meta charset="UTF-8">
         <script>
+            //Keeps track of winner
+            var winner;
             //function allows user to play rock, paper, scissors
             function computerPlay(playerSelection, computerSelection) {
                 //defines variables rock, paper, and scissors
-                var rock;
-                var paper;
-                var scissors;
-                //Question asks for player selection of: rock, paper, or scissors
-                Alert(Please)
-                //player inputs a selection
-                //computer makes a selection of: rock, paper, or scissors
+                var rps = ['rock', 'paper', 'scissors']
+                //player's selection made
+                var playerSel = playerSelection.toLowerCase();
+                //computer's selection made
+                var compSel = rps[computerSelection];
                 //choices of variables are compared
-                //winning message
-                //losing message
-                //go back to start
+                if (playerSel == compSel) {
+                    winner = "no one wins";
+                    return winner;
+                } else if (playerSel == 'rock' && compSel == 'paper') {
+                    winner = "You lose! Paper beats rock!";
+                    return winner;
+                } else if (compSel == 'rock' && playerSel == 'paper') {
+                    winner = "You won! Computer chose rock.";
+                    return winner;
+                } else if (playerSel == 'paper' && compSel == 'scissors') {
+                    winner = "you lose! Scissors beat paper!";
+                    return winner;
+                } else if (compSel == 'paper' && playerSel == 'scissors') {
+                    winner = "You won! Computer chose paper.";
+                    return winner;
+                } else if (playerSel == 'scissors' && compSel == 'rock') {
+                    winner = "You lose! Rock beats scissors!";
+                    return winner;
+                } else if (compSel == 'scissors' && playerSel == 'rock') {
+                    winner = "You won! Computer chose scissors.";
+                    return winner;
+                }
+                
             }
 
-            const playerSelection = 'paper';
-            const computerSelection = (Math.floor(3 * Math.random()));
+            
+            
 
-            console.log(computerSelection);
+            //calls computerPlay function and plays 5 games
+            function game() {
+                for (var i=0; i < 5; i++) {
+                    //asks the user what they want to play
+                   const playerSel = prompt("What would you like to play?", "");
+                   const computerSel = (Math.floor(3 * Math.random()));
+                   
+                   computerPlay(playerSel, computerSel);
+                   console.log(winner);
+
+                }
+            }
 
         </script>
     </head>
-
+    <body>
+        <button onclick="game()">Play</button>
+    </body>
 
 
 
